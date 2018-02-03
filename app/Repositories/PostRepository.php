@@ -7,17 +7,25 @@ use App\Repositories\PostInterface;
 use App\Libraries\FileStorage;
 use App\Models\Post;
 use App\Models\Comment;
+use Carbon\Carbon;
 
 class PostRepository implements PostInterface
 {
     public function all()
     {
-        return Post::selectRaw('id, title, description, image, created_at, year(created_at)year, monthname(created_at)month, count(*)')
+         $posts= Post::selectRaw('id, title, description, image, created_at, year(created_at)year, monthname(created_at)month, count(*)')
                     ->groupBy('id', 'title', 'description', 'image', 'created_at', 'year','month')
-                    ->orderBy('id','desc')->with('Comment')
-                    ->get();
+                    ->orderBy('id','desc');
 
-      //  return Post::orderBy('id', 'desc')->get();
+                    if ($month=request('month')) {
+                        $posts->whereMonth('created_at', Carbon::Parse($month)->month);
+                    }
+                    if ($year=request('year')) {
+                        $posts->whereYear('created_at',$year);
+                    }
+
+                    $posts=$posts->get();
+                    return $posts;
     }
 
     public function add(Request $request)
@@ -34,8 +42,7 @@ class PostRepository implements PostInterface
 
     public function find(Request $request)
     {
-        $posts=Post::find($request->id);
-        return $posts;
+        return Post::find($request->id);
     }
 
     public function update(Request $request)

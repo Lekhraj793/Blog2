@@ -6,16 +6,15 @@ use Illuminate\Http\Request;
 use App\Repositories\PostRepository;
 use App\Repositories\CommentRepository;
 use App\Models\Post;
+use App\Models\Comment;
 
 class PostController extends Controller
 {
 
-    public function index(PostRepository $posts)
+    public function index()
     {
-        //$post=New PostRepository();
-        $posts=$posts->all();
-        // $archives= Post::selectRaw('year(created_at)year, monthname(created_at)month, count(*)')
-        //             ->groupBy('year','month')->get();
+        $post=New PostRepository();
+        $posts=$post->all();
         return view('index', compact('posts'));
     }
 

@@ -8,8 +8,8 @@ class Post extends Model
 {
     protected $fillable=['title', 'description', 'image'];
 
-    public function Post($value='')
+    public function Post()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(App\Models\Comment::class);
     }
 }

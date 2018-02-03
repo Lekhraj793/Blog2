@@ -25,7 +25,8 @@
         <link href="/css/blog.css" rel="stylesheet" type="text/css">
         <link href="/css/secblog.css" rel="stylesheet" type="text/css">
 
-        <!-- Styles -->
+
+
         <style>
 
             html, body {
@@ -77,6 +78,7 @@
         </style>
     </head>
     <body>
+
       <div class="nav py-1 mb-2 h" style="color:blue">
             @include('include.navbar')
 
@@ -97,11 +99,15 @@
         </div>
 
           <div class="content">
+
                   @yield('content')
           </div>
 
+
           <div class="foot">
+            <p id="clock"></p>
               @include('include.footer')
+
           </div>
     </body>
 

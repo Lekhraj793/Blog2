@@ -11,7 +11,7 @@ class CommentRepository implements PostInterface
 {
     public function all()
     {
-        return Comment::select()
+        $comment=Comment::all();
     }
 
     public function add(Request $request)
@@ -24,8 +24,8 @@ class CommentRepository implements PostInterface
 
     public function find(Request $request)
     {
-        $com= Comment::find($request->id);
-        return $com;
+        return Comment::find($request->id);
+
     }
 
     public function update(Request $request)

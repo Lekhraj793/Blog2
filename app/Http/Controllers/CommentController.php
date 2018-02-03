@@ -31,6 +31,7 @@ class CommentController extends Controller
 
     public function cmmntshow(Request $request)
     {
-        
+        $comment=Post::select('post_id','comment')->where($post_id "=" $id );
+        return $comment;
     }
 }

@@ -5,7 +5,7 @@
           <ol class="list-unstyled mb-0" style="width:150px">
 
             @foreach ($posts as $stats)
-              <li><a href="#">{{$stats['month'].' '.$stats['year'] }}</a></li>
+              <li><a href="/?month={{$stats['month']}}&year={{$stats['year']}}">{{$stats['month'].' '.$stats['year'] }}</a></li>
             @endforeach
 
           </ol>

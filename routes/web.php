@@ -23,7 +23,7 @@ Route::get('/posts/show/{id}', 'PostController@show');
 Route::get('/delete/{id}', 'PostController@destroy');
 
 Route::post('/comment/{id}', 'CommentController@store');
-Route::get('/posts/show/{id}', 'CommentController@cmmntshow');
+//Route::get('/posts/show/{id}', 'CommentController@cmmntshow');
 
 
 Auth::routes();
